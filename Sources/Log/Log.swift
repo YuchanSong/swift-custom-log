@@ -12,22 +12,28 @@ public struct Log {
     }
     
     private static func log(_ msg: Any, _ args: [Any], _ level: Level, _ line: Int = #line, _ filename: String) {
+        let id: String = {
+            switch level {
+            case .debug:
+                return "💚"
+            case .info:
+                return "💜"
+            case .warn:
+                return "💛"
+            case .error:
+                return "❤️"
+            }
+        }()
+        
         let date: String = {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss:SSS"
             return dateFormatter.string(from: Date())
         }()
         
-        switch level {
-        case .debug:
-            print("\(date) 💚 [\(filename) - Line \(line)] \(msg)")
-        case .info:
-            print("\(date) 💜 [\(filename) - Line \(line)] \(msg)")
-        case .warn:
-            print("\(date) 💛 [\(filename) - Line \(line)] \(msg)")
-        case .error:
-            print("\(date) ❤️ [\(filename) - Line \(line)] \(msg)")
-        }
+        let extraMessage: String = args.map({ String(describing: $0) }).joined(separator: " ")
+        
+        print("\(date) \(id) [\(filename) - Line \(line)] \(msg) \(extraMessage)")
     }
 }
 
