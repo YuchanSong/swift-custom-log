@@ -32,19 +32,19 @@ struct Log {
 }
 
 extension Log {
-    static func d(_ msg: Any, _ args: [Any] = [], _ line: Int = #line, filename: String = #file) {
+    public static func d(_ msg: Any, _ args: [Any] = [], _ line: Int = #line, filename: String = #file) {
         log(msg, args, .debug, line, URL(string: filename)!.lastPathComponent)
     }
     
-    static func i(_ msg: Any, _ args: [Any] = [], _ line: Int = #line, filename: String = #file) {
+    public static func i(_ msg: Any, _ args: [Any] = [], _ line: Int = #line, filename: String = #file) {
         log(msg, args, .info, line, URL(string: filename)!.lastPathComponent)
     }
     
-    static func w(_ msg: Any, _ args: [Any] = [], _ line: Int = #line, filename: String = #file) {
+    public static func w(_ msg: Any, _ args: [Any] = [], _ line: Int = #line, filename: String = #file) {
         log(msg, args, .warn, line, URL(string: filename)!.lastPathComponent)
     }
 
-    static func e(_ msg: Any, _ args: [Any] = [], _ line: Int = #line, filename: String = #file) {
+    public static func e(_ msg: Any, _ args: [Any] = [], _ line: Int = #line, filename: String = #file) {
         log(msg, args, .error, line, URL(string: filename)!.lastPathComponent)
     }
 }
