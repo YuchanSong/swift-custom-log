@@ -6,7 +6,7 @@
 
 import UIKit
 
-struct Log {
+public struct Log {
     enum Level {
         case debug, info, warn, error
     }
